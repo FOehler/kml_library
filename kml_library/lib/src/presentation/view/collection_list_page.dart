@@ -9,6 +9,7 @@ class CollectionListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.collectionListTitle),
+        centerTitle: true,
       ),
       body: Container(),
     );
