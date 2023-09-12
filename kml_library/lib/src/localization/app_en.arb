@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "appTitle": "KML_Library",
   "@appTitle": {
     "description": "The title of the application"
