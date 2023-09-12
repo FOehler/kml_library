@@ -15,6 +15,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.4.0
+  freezed: ^2.4.2
 
 dev_dependencies:
   flutter_test:
