@@ -22,8 +22,8 @@ class MainApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
       ],
       onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
-      theme: ThemeData(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(useMaterial3: true),
+      darkTheme: ThemeData.dark(useMaterial3: true),
       home: CollectionListPage(),
     );
   }
