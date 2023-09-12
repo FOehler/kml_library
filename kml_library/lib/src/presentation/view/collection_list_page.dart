@@ -10,6 +10,7 @@ class CollectionListPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.collectionListTitle),
         centerTitle: true,
+        actions: const [IconButton(onPressed: null, icon: Icon(Icons.settings_outlined))],
       ),
       body: Container(),
     );
