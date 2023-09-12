@@ -1,6 +1,10 @@
 {
-  "appTitle": "kml_library",
+  "appTitle": "KML_Library",
   "@appTitle": {
+    "description": "The title of the application"
+  },
+  "collectionListTitle": "KML Library",
+  "@collectionListTitle": {
     "description": "The title of the application"
   }
 }
