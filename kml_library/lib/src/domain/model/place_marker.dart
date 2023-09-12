@@ -1,10 +1,17 @@
-class PlaceMarker {
-  PlaceMarker(this.name, this.description, this.icon, this.color, this.xCoordinate, this.yCoordinate);
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String name;
-  final String description;
-  final String icon;
-  final int color;
-  final double xCoordinate;
-  final double yCoordinate;
+part 'place_marker.freezed.dart';
+
+@freezed
+class PlaceMarker with _$PlaceMarker {
+  const factory PlaceMarker({
+    required String name,
+    required String description,
+    required String icon,
+    required int color,
+    required double xCoordinate,
+    required double yCoordinate,
+  }) = _PlaceMarker;
+
+  const PlaceMarker._();
 }

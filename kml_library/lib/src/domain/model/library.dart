@@ -1,7 +1,13 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 
-class Library {
-  Library(this.collections);
+part 'library.freezed.dart';
 
-  final List<Collection> collections;
+@freezed
+class Library with _$Library {
+  const factory Library({
+    required List<Collection> collections,
+  }) = _Library;
+
+  const Library._();
 }
