@@ -39,7 +39,7 @@ class CollectionListPage extends StatelessWidget {
 
   Widget _buildCollectionListWidget(final WidgetRef ref, final Library library) {
     if (library.length == 0) {
-      return const Center(child: Text('No ToDo'));
+      return const Center(child: Text('No Collection Available'));
     } else {
       return ListView.builder(
         padding: const EdgeInsets.all(8),
@@ -47,8 +47,15 @@ class CollectionListPage extends StatelessWidget {
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
         itemBuilder: (final BuildContext context, final int index) {
-          return Text(
-            library[index].name,
+          return ListTile(
+            leading: Text(
+              library[index].icon,
+              style: TextStyle(fontSize: 25),
+            ),
+            title: Text(
+              library[index].name,
+            ),
+            subtitle: Text("${library[index].placeMarkers.length.toString()} Items"),
           );
         },
       );

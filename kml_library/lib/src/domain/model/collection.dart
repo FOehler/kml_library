@@ -9,6 +9,7 @@ class Collection with _$Collection {
   const factory Collection({
     required CollectionId id,
     required String name,
+    required String icon,
     required List<PlaceMarker> placeMarkers,
   }) = _Collection;
 
