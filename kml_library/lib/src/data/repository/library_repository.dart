@@ -1,3 +1,4 @@
+import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/collection_id.dart';
 import 'package:kml_library/src/domain/model/library.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
@@ -18,7 +19,10 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<Library> getLibrary() {
-    // TODO: implement getLibrary
-    throw UnimplementedError();
+    return Future.value(const Library(collections: [
+      Collection(id: CollectionId(value: 1), name: "Iceland 2023", placeMarkers: []),
+      Collection(id: CollectionId(value: 1), name: "Türkiye 2022", placeMarkers: []),
+      Collection(id: CollectionId(value: 1), name: "Sakartvelo 2022", placeMarkers: []),
+    ]));
   }
 }
