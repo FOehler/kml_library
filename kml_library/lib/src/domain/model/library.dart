@@ -9,5 +9,9 @@ class Library with _$Library {
     required List<Collection> collections,
   }) = _Library;
 
+  Collection operator [](final int index) => collections[index];
+
+  int get length => collections.length;
+
   const Library._();
 }
