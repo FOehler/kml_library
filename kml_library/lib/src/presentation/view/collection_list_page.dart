@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/library.dart';
+import 'package:kml_library/src/presentation/view/marker_list_page.dart';
 import 'package:kml_library/src/presentation/viewmodel/collection_list_viewmodel.dart';
 
 class CollectionListPage extends StatelessWidget {
@@ -47,18 +49,26 @@ class CollectionListPage extends StatelessWidget {
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
         itemBuilder: (final BuildContext context, final int index) {
-          return ListTile(
-            leading: Text(
-              library[index].icon,
-              style: TextStyle(fontSize: 25),
-            ),
-            title: Text(
-              library[index].name,
-            ),
-            subtitle: Text("${library[index].placeMarkers.length.toString()} Items"),
-          );
+          return _buildCollectionItemCard(context, ref, library[index]);
         },
       );
     }
+  }
+
+  Widget _buildCollectionItemCard(BuildContext context, WidgetRef ref, Collection collection) {
+    return ListTile(
+      leading: Text(
+        collection.icon,
+        style: TextStyle(fontSize: 25),
+      ),
+      title: Text(
+        collection.name,
+      ),
+      subtitle: Text("${collection.placeMarkers.length.toString()} Items"),
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => MarkerListPage(collection)),
+      ),
+    );
   }
 }
