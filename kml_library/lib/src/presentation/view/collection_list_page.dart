@@ -76,7 +76,7 @@ class CollectionListPage extends StatelessWidget {
 
   _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ImportCollectionPage())),
+      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ImportCollectionPage())),
       child: const Icon(Icons.add),
     );
   }
