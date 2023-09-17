@@ -28,6 +28,7 @@ class CollectionListPage extends StatelessWidget {
           }),
         ],
       ),
+      floatingActionButton: _buildFloatingActionButton(),
     );
   }
 
@@ -59,7 +60,7 @@ class CollectionListPage extends StatelessWidget {
     return ListTile(
       leading: Text(
         collection.icon,
-        style: TextStyle(fontSize: 25),
+        style: const TextStyle(fontSize: 25),
       ),
       title: Text(
         collection.name,
@@ -69,6 +70,13 @@ class CollectionListPage extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (_) => MarkerListPage(collection)),
       ),
+    );
+  }
+
+  _buildFloatingActionButton() {
+    return FloatingActionButton(
+      onPressed: () {},
+      child: const Icon(Icons.add),
     );
   }
 }
