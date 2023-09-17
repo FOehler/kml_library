@@ -12,12 +12,32 @@ class MarkerListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_collection.name),
-        centerTitle: true,
-        actions: const [IconButton(onPressed: null, icon: Icon(Icons.settings_outlined))],
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () => null,
+          )
+        ],
       ),
-      body: Column(
-        children: [_buildMarkerListContainerWidget(_collection)],
+      body: SafeArea(
+        child: Column(
+          children: [_buildMarkerListContainerWidget(_collection)],
+        ),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore_outlined),
+          label: 'Markers',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings_outlined),
+          label: 'Settings',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.download_outlined),
+          label: 'Export',
+        ),
+      ]),
     );
   }
 
