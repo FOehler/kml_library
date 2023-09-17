@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/library.dart';
+import 'package:kml_library/src/presentation/view/import_collection_page.dart';
 import 'package:kml_library/src/presentation/view/marker_list_page.dart';
 import 'package:kml_library/src/presentation/viewmodel/collection_list_viewmodel.dart';
 
@@ -28,7 +29,7 @@ class CollectionListPage extends StatelessWidget {
           }),
         ],
       ),
-      floatingActionButton: _buildFloatingActionButton(),
+      floatingActionButton: _buildFloatingActionButton(context),
     );
   }
 
@@ -73,9 +74,9 @@ class CollectionListPage extends StatelessWidget {
     );
   }
 
-  _buildFloatingActionButton() {
+  _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ImportCollectionPage())),
       child: const Icon(Icons.add),
     );
   }

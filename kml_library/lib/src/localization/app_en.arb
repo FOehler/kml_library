@@ -7,5 +7,9 @@
   "collectionListTitle": "KML Library",
   "@collectionListTitle": {
     "description": "The title of the application"
-  }
+  },
+  "importPageTitle": "Import",
+  "importGoogleMyMapsHeader": "Google MyMaps KML / KMZ",
+  "importGoogleMyMapsInfoText": "Currently only KML and KMZ files from Google MyMaps are officially supported.",
+  "importPageImportButton": "Import"
 }
