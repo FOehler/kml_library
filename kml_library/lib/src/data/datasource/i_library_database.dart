@@ -1,5 +1,7 @@
-import 'package:kml_library/src/data/entity/library_entity.dart';
+import 'package:kml_library/src/data/entity/collection_entity.dart';
 
 abstract class ILibraryDatabase {
-  Future<LibraryEntity> library();
+  Future<List<CollectionEntity>> getLibrary();
+
+  Future addCollection(CollectionEntity collection);
 }

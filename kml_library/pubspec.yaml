@@ -6,6 +6,8 @@ publish_to: "none"
 
 version: 1.0.0+1
 
+isar_version: &isar_version 3.1.0 # define the version to be used
+
 environment:
   sdk: ">=3.0.6 <4.0.0"
 
@@ -17,12 +19,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.4.0
-  freezed: ^2.4.2
+  freezed: ^2.4.1
   freezed_annotation: ^2.4.1
   palette_generator: ^0.3.3+3
   path: ^1.8.3
   path_provider: ^2.1.1
   xml: ^6.3.0
+  isar: *isar_version
+  isar_flutter_libs: *isar_version # contains Isar Core
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +34,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
+  isar_generator: *isar_version
 
 flutter:
   uses-material-design: true

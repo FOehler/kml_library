@@ -5,4 +5,5 @@ import 'package:kml_library/src/data/repository/library_repository.dart';
 import 'package:kml_library/src/domain/respository/i_library_repository.dart';
 
 final libraryDatabaseProvider = Provider<ILibraryDatabase>((_) => LibraryDatabase());
-final libraryRepositoryProvider = Provider<ILibraryRepository>((ref) => LibraryRepository());
+final libraryRepositoryProvider =
+    Provider<ILibraryRepository>((ref) => LibraryRepository(ref.watch(libraryDatabaseProvider)));

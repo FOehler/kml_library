@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:kml_library/src/domain/logic/parsers/i_parser.dart';
 import 'package:kml_library/src/domain/logic/parsers/mymaps_kmz_file_parser.dart';
 import 'package:kml_library/src/domain/logic/parsers/mymaps_kml_file_parser.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
@@ -13,15 +14,16 @@ class ImportMyMapsCollectionUseCase implements IImportMyMapsCollectionUseCase {
 
   @override
   Future<Collection> execute(String path) async {
+    IParser parser;
+    File file = File(path);
     if (path.endsWith("kmz")) {
-      final zipFile = File(path);
-      MyMapsKmzFileParser parser = MyMapsKmzFileParser(zipFile);
-      // TODO: Store to repository
-      return parser.parse();
+      parser = MyMapsKmzFileParser(file);
     } else {
-      File file = File(path);
-      MyMapsKmlFileParser parser = MyMapsKmlFileParser(file);
-      return parser.parse();
+      parser = MyMapsKmlFileParser(file);
     }
+
+    Collection collection = await parser.parse();
+    _repository.addCollection(collection);
+    return collection;
   }
 }
