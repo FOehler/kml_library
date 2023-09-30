@@ -21,6 +21,7 @@ class CollectionListPage extends StatelessWidget {
       body: Column(
         children: [
           Consumer(builder: (context, ref, _) {
+            ref.watch(_collectionListProvider.notifier).updateLibrary();
             return ref.watch(_collectionListProvider).maybeWhen(
                   success: (content) => _buildCollectionListContainerWidget(ref, content),
                   error: (_) => _buildErrorWidget(),

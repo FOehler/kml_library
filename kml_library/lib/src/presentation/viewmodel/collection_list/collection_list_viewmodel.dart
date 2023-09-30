@@ -18,11 +18,17 @@ class CollectionListViewModel extends StateNotifier<State<Library>> {
     _getLibrary();
   }
 
+  updateLibrary() async {
+    state = const State.loading();
+    final library = await _getLibraryUseCase.execute();
+    state = State.success(library);
+  }
+
   _getLibrary() async {
     try {
       state = const State.loading();
-      final todoList = await _getLibraryUseCase.execute();
-      state = State.success(todoList);
+      final library = await _getLibraryUseCase.execute();
+      state = State.success(library);
     } on Exception catch (e) {
       state = State.error(e);
     }

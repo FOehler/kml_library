@@ -134,6 +134,7 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
                 ElevatedButton(
                   onPressed: () {
                     _viewModel.deleteCollection(collection.id);
+                    Navigator.pop(context);
                   },
                   style: TextButton.styleFrom(foregroundColor: Colors.primaries[0]),
                   child: Text("Delete"),
