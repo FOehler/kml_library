@@ -15,7 +15,7 @@ class CollectionMapper {
 
   static Collection transformToModel(CollectionEntity collectionEntity) {
     Collection collection = Collection(
-        id: CollectionId(value: 1),
+        id: CollectionId(value: collectionEntity.id),
         name: collectionEntity.name!,
         icon: collectionEntity.icon!,
         placeMarkers: collectionEntity.placeMarkers!.map((p) => PlaceMarkerMapper.transformToModel(p)).toList());

@@ -4,4 +4,6 @@ abstract class ILibraryDatabase {
   Future<List<CollectionEntity>> getLibrary();
 
   Future addCollection(CollectionEntity collection);
+
+  Future deleteCollection(int collectionId);
 }

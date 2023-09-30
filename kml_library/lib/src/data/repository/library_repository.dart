@@ -18,8 +18,7 @@ class LibraryRepository implements ILibraryRepository {
 
   @override
   Future<void> deleteCollection(CollectionId id) {
-    // TODO: implement deleteCollection
-    throw UnimplementedError();
+    return database.deleteCollection(id.value);
   }
 
   @override

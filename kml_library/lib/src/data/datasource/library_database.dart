@@ -30,4 +30,12 @@ class LibraryDatabase implements ILibraryDatabase {
       return db.collection<CollectionEntity>().put(collection);
     });
   }
+
+  @override
+  Future deleteCollection(int collectionId) async {
+    final db = await database;
+    return db.writeTxn(() async {
+      return db.collectionEntitys.delete(collectionId);
+    });
+  }
 }
