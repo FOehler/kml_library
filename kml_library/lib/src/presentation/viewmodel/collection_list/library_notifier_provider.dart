@@ -13,9 +13,8 @@ final libraryNotifierProvider =
   final importMyMapsCollectionUseCase =
       ref.watch(importMyMapsCollectionUseCaseProvider);
   final deleteCollectionUseCase = ref.watch(deleteCollectionUseCaseProvider);
-  return LibraryNotifier(
-      getLibraryUseCase, importMyMapsCollectionUseCase, deleteCollectionUseCase)
-    ..getLibrary();
+  return LibraryNotifier(getLibraryUseCase, importMyMapsCollectionUseCase,
+      deleteCollectionUseCase);
 });
 
 class LibraryNotifier extends StateNotifier<State<Library>> {
@@ -25,16 +24,16 @@ class LibraryNotifier extends StateNotifier<State<Library>> {
 
   LibraryNotifier(this._getLibraryUseCase, this._importMyMapsCollectionUseCase,
       this._deleteCollectionUseCase)
-      : super(const State.init());
+      : super(const State.init()) {
+    getLibrary();
+  }
 
-  Future<Library> getLibrary() async {
+  getLibrary() async {
     try {
       Library library = await _getLibraryUseCase.execute();
       state = State.success(library);
-      return library;
     } on Exception catch (e) {
       state = State.error(e);
-      return Future.value(null);
     }
   }
 

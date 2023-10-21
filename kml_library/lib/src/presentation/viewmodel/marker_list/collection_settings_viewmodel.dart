@@ -1,8 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kml_library/src/domain/domain_module.dart';
 import 'package:kml_library/src/domain/model/collection_id.dart';
-import 'package:kml_library/src/domain/usecases/i_delete_collection_usecase.dart';
-import 'package:kml_library/src/presentation/viewmodel/collection_list/libraryNotifierProvider.dart';
+import 'package:kml_library/src/presentation/viewmodel/collection_list/library_notifier_provider.dart';
 
 final collectionSettingsViewModelProvider = Provider.autoDispose((ref) {
   return CollectionSettingsViewModel(

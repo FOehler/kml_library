@@ -27,7 +27,7 @@ class LibraryDatabase implements ILibraryDatabase {
   Future addCollection(CollectionEntity collection) async {
     final db = await database;
     return db.writeTxn(() async {
-      int id = await db.collection<CollectionEntity>().put(collection);
+      await db.collection<CollectionEntity>().put(collection);
     });
   }
 

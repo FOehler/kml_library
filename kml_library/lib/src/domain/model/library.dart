@@ -14,4 +14,8 @@ class Library with _$Library {
   int get length => collections.length;
 
   const Library._();
+
+  static GetEmptyLibrary() {
+    return Library(collections: []);
+  }
 }

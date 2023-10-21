@@ -5,7 +5,7 @@ import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/library.dart';
 import 'package:kml_library/src/presentation/view/import_collection_page.dart';
 import 'package:kml_library/src/presentation/view/marker_list_page.dart';
-import 'package:kml_library/src/presentation/viewmodel/collection_list/libraryNotifierProvider.dart';
+import 'package:kml_library/src/presentation/viewmodel/collection_list/library_notifier_provider.dart';
 
 class CollectionListPage extends ConsumerStatefulWidget {
   @override
@@ -14,8 +14,6 @@ class CollectionListPage extends ConsumerStatefulWidget {
 }
 
 class CollectionListPageState extends ConsumerState<CollectionListPage> {
-  late final LibraryNotifier _libraryNotifier;
-
   @override
   void initState() {
     super.initState();

@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:kml_library/src/presentation/viewmodel/collection_list/libraryNotifierProvider.dart';
+import 'package:kml_library/src/presentation/viewmodel/collection_list/library_notifier_provider.dart';
 
 final importCollectionViewModelProvider = Provider.autoDispose((ref) {
   return ImportCollectionViewModel(ref.watch(libraryNotifierProvider.notifier));
