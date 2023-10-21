@@ -11,5 +11,7 @@
   "importPageTitle": "Import",
   "importGoogleMyMapsHeader": "Google MyMaps KML / KMZ",
   "importGoogleMyMapsInfoText": "Currently only KML and KMZ files from Google MyMaps are officially supported.",
-  "importPageImportButton": "Import"
+  "importPageImportButton": "Import",
+  "collectionSettingPageDeleteButton": "Delete",
+  "collectionSettingPageSaveButton": "Save"
 }

@@ -4,14 +4,12 @@ import 'package:kml_library/src/domain/model/place_marker.dart';
 
 part 'collection.freezed.dart';
 
-@freezed
+@unfreezed
 class Collection with _$Collection {
-  const factory Collection({
+  factory Collection({
     required CollectionId id,
     required String name,
     required String icon,
     required List<PlaceMarker> placeMarkers,
   }) = _Collection;
-
-  const Collection._();
 }

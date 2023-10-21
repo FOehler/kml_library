@@ -8,4 +8,6 @@ abstract class ILibraryRepository {
   Future<Collection> addCollection(Collection collection);
 
   Future<void> deleteCollection(final CollectionId id);
+
+  Future<Collection> renameCollection(CollectionId id, String name);
 }

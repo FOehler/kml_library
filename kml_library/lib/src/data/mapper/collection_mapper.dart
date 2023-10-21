@@ -8,8 +8,9 @@ class CollectionMapper {
     CollectionEntity entity = CollectionEntity();
     entity.name = collection.name;
     entity.icon = collection.icon;
-    entity.placeMarkers =
-        collection.placeMarkers.map<PlaceMarkerEntity>((p) => PlaceMarkerMapper.transformToEntity(p)).toList();
+    entity.placeMarkers = collection.placeMarkers
+        .map<PlaceMarkerEntity>((p) => PlaceMarkerMapper.transformToEntity(p))
+        .toList();
     return entity;
   }
 
@@ -18,7 +19,9 @@ class CollectionMapper {
         id: CollectionId(value: collectionEntity.id),
         name: collectionEntity.name!,
         icon: collectionEntity.icon!,
-        placeMarkers: collectionEntity.placeMarkers!.map((p) => PlaceMarkerMapper.transformToModel(p)).toList());
+        placeMarkers: collectionEntity.placeMarkers!
+            .map((p) => PlaceMarkerMapper.transformToModel(p))
+            .toList());
     return collection;
   }
 }

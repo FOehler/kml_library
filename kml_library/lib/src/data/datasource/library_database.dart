@@ -38,4 +38,20 @@ class LibraryDatabase implements ILibraryDatabase {
       return db.collectionEntitys.delete(collectionId);
     });
   }
+
+  @override
+  Future<CollectionEntity> renameCollection(
+      int collectionId, String newName) async {
+    final db = await database;
+    CollectionEntity? collection = await db.collectionEntitys.get(collectionId);
+    if (collection != null) {
+      collection.name = newName;
+      await db.writeTxn(() async {
+        await db.collection<CollectionEntity>().put(collection);
+      });
+      return collection;
+    } else {
+      return CollectionEntity();
+    }
+  }
 }

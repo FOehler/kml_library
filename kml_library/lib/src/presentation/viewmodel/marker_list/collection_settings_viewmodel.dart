@@ -16,4 +16,9 @@ class CollectionSettingsViewModel {
   deleteCollection(final CollectionId collectionId) async {
     _libraryNotifier.deleteCollection(collectionId);
   }
+
+  renameCollection(
+      final CollectionId collectionId, final String newName) async {
+    _libraryNotifier.renameCollection(collectionId, newName);
+  }
 }

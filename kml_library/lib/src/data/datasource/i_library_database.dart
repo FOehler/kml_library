@@ -6,4 +6,6 @@ abstract class ILibraryDatabase {
   Future addCollection(CollectionEntity collection);
 
   Future deleteCollection(int collectionId);
+
+  Future<CollectionEntity> renameCollection(int collectionId, String newName);
 }

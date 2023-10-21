@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
@@ -16,11 +17,13 @@ class MarkerListPage extends ConsumerStatefulWidget {
 class MarkerListPageState extends ConsumerState<MarkerListPage> {
   late final CollectionSettingsViewModel _viewModel;
   int currentPageIndex = 0;
+  final collectionNameController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _viewModel = ref.read(collectionSettingsViewModelProvider);
+    collectionNameController.text = widget._collection.name;
   }
 
   @override
@@ -94,13 +97,15 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
         itemBuilder: (final BuildContext context, final int index) {
-          return _buildPlaceMarkerItemCard(context, collection.placeMarkers[index]);
+          return _buildPlaceMarkerItemCard(
+              context, collection.placeMarkers[index]);
         },
       );
     }
   }
 
-  Widget _buildPlaceMarkerItemCard(BuildContext context, PlaceMarker placeMarker) {
+  Widget _buildPlaceMarkerItemCard(
+      BuildContext context, PlaceMarker placeMarker) {
     return ListTile(
         leading: const Icon(
           Icons.place_outlined,
@@ -108,7 +113,8 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
         title: Text(
           placeMarker.name,
         ),
-        subtitle: Text("${placeMarker.xCoordinate}, ${placeMarker.yCoordinate}"));
+        subtitle:
+            Text("${placeMarker.xCoordinate}, ${placeMarker.yCoordinate}"));
   }
 
   Widget _buildSettingsPage(Collection collection) {
@@ -122,6 +128,7 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
             Padding(
               padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: TextFormField(
+                controller: collectionNameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Collection Name',
@@ -136,13 +143,25 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
                     _viewModel.deleteCollection(collection.id);
                     Navigator.pop(context);
                   },
-                  style: TextButton.styleFrom(foregroundColor: Colors.primaries[0]),
-                  child: Text("Delete"),
+                  style: TextButton.styleFrom(
+                      foregroundColor: Colors.primaries[0]),
+                  child: Text(AppLocalizations.of(context)!
+                      .collectionSettingPageDeleteButton),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
-                FilledButton(onPressed: () => {}, child: Text("Save")),
+                FilledButton(
+                    onPressed: () {
+                      _viewModel.renameCollection(
+                          collection.id, collectionNameController.text);
+                      setState((() {
+                        widget._collection.name = collectionNameController.text;
+                        currentPageIndex = 0;
+                      }));
+                    },
+                    child: Text(AppLocalizations.of(context)!
+                        .collectionSettingPageSaveButton)),
               ],
             ),
           ],

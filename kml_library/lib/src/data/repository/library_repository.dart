@@ -31,4 +31,11 @@ class LibraryRepository implements ILibraryRepository {
             .map((c) => CollectionMapper.transformToModel(c))
             .toList());
   }
+
+  @override
+  Future<Collection> renameCollection(CollectionId id, String newName) async {
+    CollectionEntity entity =
+        await database.renameCollection(id.value, newName);
+    return CollectionMapper.transformToModel(entity);
+  }
 }
