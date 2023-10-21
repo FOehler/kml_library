@@ -12,8 +12,10 @@ class LibraryRepository implements ILibraryRepository {
   const LibraryRepository(this.database);
 
   @override
-  Future<void> addCollection(Collection collection) {
-    return database.addCollection(CollectionMapper.transformToEntity(collection));
+  Future<Collection> addCollection(Collection collection) async {
+    await database
+        .addCollection(CollectionMapper.transformToEntity(collection));
+    return collection;
   }
 
   @override
@@ -24,6 +26,9 @@ class LibraryRepository implements ILibraryRepository {
   @override
   Future<Library> getLibrary() async {
     List<CollectionEntity> collections = await database.getLibrary();
-    return Library(collections: collections.map((c) => CollectionMapper.transformToModel(c)).toList());
+    return Library(
+        collections: collections
+            .map((c) => CollectionMapper.transformToModel(c))
+            .toList());
   }
 }

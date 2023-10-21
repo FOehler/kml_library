@@ -22,8 +22,7 @@ class ImportMyMapsCollectionUseCase implements IImportMyMapsCollectionUseCase {
       parser = MyMapsKmlFileParser(file);
     }
 
-    Collection collection = await parser.parse();
-    _repository.addCollection(collection);
-    return collection;
+    Collection parsedCollection = await parser.parse();
+    return await _repository.addCollection(parsedCollection);
   }
 }

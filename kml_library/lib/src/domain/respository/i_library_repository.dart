@@ -5,7 +5,7 @@ import 'package:kml_library/src/domain/model/library.dart';
 abstract class ILibraryRepository {
   Future<Library> getLibrary();
 
-  Future<void> addCollection(Collection collection);
+  Future<Collection> addCollection(Collection collection);
 
   Future<void> deleteCollection(final CollectionId id);
 }

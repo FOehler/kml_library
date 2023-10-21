@@ -5,29 +5,39 @@ import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/library.dart';
 import 'package:kml_library/src/presentation/view/import_collection_page.dart';
 import 'package:kml_library/src/presentation/view/marker_list_page.dart';
-import 'package:kml_library/src/presentation/viewmodel/collection_list/collection_list_viewmodel.dart';
+import 'package:kml_library/src/presentation/viewmodel/collection_list/libraryNotifierProvider.dart';
 
-class CollectionListPage extends StatelessWidget {
-  final _collectionListProvider = collectionListViewModelStateNotifierProvider;
+class CollectionListPage extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      CollectionListPageState();
+}
+
+class CollectionListPageState extends ConsumerState<CollectionListPage> {
+  late final LibraryNotifier _libraryNotifier;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final libraryNotifier = ref.watch(libraryNotifierProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.collectionListTitle),
         centerTitle: true,
-        actions: const [IconButton(onPressed: null, icon: Icon(Icons.settings_outlined))],
+        actions: const [
+          IconButton(onPressed: null, icon: Icon(Icons.settings_outlined))
+        ],
       ),
       body: Column(
         children: [
-          Consumer(builder: (context, ref, _) {
-            ref.watch(_collectionListProvider.notifier).updateLibrary();
-            return ref.watch(_collectionListProvider).maybeWhen(
-                  success: (content) => _buildCollectionListContainerWidget(ref, content),
-                  error: (_) => _buildErrorWidget(),
-                  orElse: () => const Expanded(child: Center(child: CircularProgressIndicator())),
-                );
-          }),
+          libraryNotifier.isSuccess
+              ? _buildCollectionListContainerWidget(ref, libraryNotifier.data!)
+              : const CircularProgressIndicator()
         ],
       ),
       floatingActionButton: _buildFloatingActionButton(context),
@@ -38,11 +48,13 @@ class CollectionListPage extends StatelessWidget {
     return const Center(child: Text('An error has occurred!'));
   }
 
-  Widget _buildCollectionListContainerWidget(WidgetRef ref, final Library library) {
+  Widget _buildCollectionListContainerWidget(
+      WidgetRef ref, final Library library) {
     return Expanded(child: _buildCollectionListWidget(ref, library));
   }
 
-  Widget _buildCollectionListWidget(final WidgetRef ref, final Library library) {
+  Widget _buildCollectionListWidget(
+      final WidgetRef ref, final Library library) {
     if (library.length == 0) {
       return const Center(child: Text('No Collection Available'));
     } else {
@@ -58,7 +70,8 @@ class CollectionListPage extends StatelessWidget {
     }
   }
 
-  Widget _buildCollectionItemCard(BuildContext context, WidgetRef ref, Collection collection) {
+  Widget _buildCollectionItemCard(
+      BuildContext context, WidgetRef ref, Collection collection) {
     return ListTile(
       leading: Text(
         collection.icon,
@@ -77,7 +90,8 @@ class CollectionListPage extends StatelessWidget {
 
   _buildFloatingActionButton(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ImportCollectionPage())),
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (_) => ImportCollectionPage())),
       child: const Icon(Icons.add),
     );
   }

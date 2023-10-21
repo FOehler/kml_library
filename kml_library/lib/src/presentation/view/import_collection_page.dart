@@ -51,6 +51,7 @@ class ImportCollectionPage extends ConsumerWidget {
       child: Text(AppLocalizations.of(context)!.importPageImportButton),
       onPressed: () {
         ref.watch(_importCollectionProvider).importMyMapsCollection();
+        Navigator.pop(context);
       },
     );
   }

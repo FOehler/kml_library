@@ -7,7 +7,7 @@ import 'package:kml_library/src/presentation/viewmodel/marker_list/collection_se
 class MarkerListPage extends ConsumerStatefulWidget {
   final Collection _collection;
 
-  const MarkerListPage(this._collection);
+  MarkerListPage(this._collection);
 
   @override
   MarkerListPageState createState() => MarkerListPageState();
