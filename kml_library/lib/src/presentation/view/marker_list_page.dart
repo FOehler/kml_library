@@ -144,7 +144,7 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
                     Navigator.pop(context);
                   },
                   style: TextButton.styleFrom(
-                      foregroundColor: Colors.primaries[0]),
+                      foregroundColor: Colors.primaries[0], elevation: 0),
                   child: Text(AppLocalizations.of(context)!
                       .collectionSettingPageDeleteButton),
                 ),
