@@ -71,10 +71,6 @@ class CollectionListPageState extends ConsumerState<CollectionListPage> {
   Widget _buildCollectionItemCard(
       BuildContext context, WidgetRef ref, Collection collection) {
     return ListTile(
-      leading: Text(
-        collection.icon,
-        style: const TextStyle(fontSize: 25),
-      ),
       title: Text(
         collection.name,
       ),
