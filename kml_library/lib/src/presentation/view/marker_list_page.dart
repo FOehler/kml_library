@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
+import 'package:kml_library/src/domain/usecases/export_mapsme_collection_usecase.dart';
 import 'package:kml_library/src/presentation/viewmodel/marker_list/collection_settings_viewmodel.dart';
 
 class MarkerListPage extends ConsumerStatefulWidget {
@@ -70,10 +71,8 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
         SafeArea(
           child: _buildSettingsPage(widget._collection),
         ),
-        const SafeArea(
-          child: Column(
-            children: [Text("Export")],
-          ),
+        SafeArea(
+          child: _buildExportPage(widget._collection),
         ),
       ][currentPageIndex],
     );
@@ -168,6 +167,48 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildExportPage(Collection collection) {
+    return Column(children: [
+      Card(
+          margin: const EdgeInsets.all(8),
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Theme.of(context).colorScheme.outline,
+            ),
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
+          ),
+          child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(AppLocalizations.of(context)!.exportMapsMeHeader,
+                      style: const TextStyle(fontSize: 24)),
+                  Text(AppLocalizations.of(context)!.exportMapsMeInfoText),
+                  const SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      _buildExportButton(context, ref, collection),
+                    ],
+                  )
+                ],
+              )))
+    ]);
+  }
+
+  _buildExportButton(
+      BuildContext context, WidgetRef ref, Collection collection) {
+    return FilledButton(
+      child: Text(AppLocalizations.of(context)!.exportPageImportButton),
+      onPressed: () {
+        ExportMapsMeCollectionUseCase useCase = ExportMapsMeCollectionUseCase();
+        useCase.execute(collection);
+      },
     );
   }
 }

@@ -13,5 +13,8 @@
   "importGoogleMyMapsInfoText": "Currently only KML and KMZ files from Google MyMaps are officially supported.",
   "importPageImportButton": "Import",
   "collectionSettingPageDeleteButton": "Delete",
-  "collectionSettingPageSaveButton": "Save"
+  "collectionSettingPageSaveButton": "Save",
+  "exportMapsMeHeader": "MAPS.ME KML",
+  "exportMapsMeInfoText": "Currently only export to MAPS.ME KML files is supported.",
+  "exportPageImportButton": "Export"
 }

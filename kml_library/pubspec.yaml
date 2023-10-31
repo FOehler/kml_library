@@ -25,6 +25,7 @@ dependencies:
   xml: ^6.3.0
   isar: ^3.1.0
   isar_flutter_libs: ^3.1.0 # contains Isar Core
+  flutter_share: ^2.0.0
 
 dev_dependencies:
   flutter_test:
