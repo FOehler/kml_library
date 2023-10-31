@@ -107,8 +107,9 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
   Widget _buildPlaceMarkerItemCard(
       BuildContext context, PlaceMarker placeMarker) {
     return ListTile(
-        leading: const Icon(
+        leading: Icon(
           Icons.place_outlined,
+          color: Color(placeMarker.color),
         ),
         title: Text(
           placeMarker.name,
