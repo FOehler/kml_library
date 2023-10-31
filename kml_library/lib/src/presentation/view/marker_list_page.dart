@@ -47,21 +47,21 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
             });
           },
           selectedIndex: currentPageIndex,
-          destinations: const <Widget>[
+          destinations: <Widget>[
             NavigationDestination(
-              icon: Icon(Icons.explore_outlined),
-              selectedIcon: Icon(Icons.explore),
-              label: 'Markers',
+              icon: const Icon(Icons.explore_outlined),
+              selectedIcon: const Icon(Icons.explore),
+              label: AppLocalizations.of(context)!.markerListPageLabelMarkers,
             ),
             NavigationDestination(
-              icon: Icon(Icons.settings_outlined),
-              selectedIcon: Icon(Icons.settings),
-              label: 'Settings',
+              icon: const Icon(Icons.settings_outlined),
+              selectedIcon: const Icon(Icons.settings),
+              label: AppLocalizations.of(context)!.markerListPageLabelSettings,
             ),
             NavigationDestination(
-              icon: Icon(Icons.download_outlined),
-              selectedIcon: Icon(Icons.download),
-              label: 'Export',
+              icon: const Icon(Icons.download_outlined),
+              selectedIcon: const Icon(Icons.download),
+              label: AppLocalizations.of(context)!.markerListPageLabelExport,
             ),
           ]),
       body: <Widget>[
@@ -88,7 +88,9 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
 
   _buildMarkerListWidget(Collection collection) {
     if (collection.placeMarkers.isEmpty) {
-      return const Center(child: Text('No Collection Available'));
+      return Center(
+          child: Text(
+              AppLocalizations.of(context)!.markerListPageNoMarkersAvailable));
     } else {
       return ListView.builder(
         padding: const EdgeInsets.all(8),
@@ -129,9 +131,10 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
               padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
               child: TextFormField(
                 controller: collectionNameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Collection Name',
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: AppLocalizations.of(context)!
+                      .collectionSettingPageCollectionNameField,
                 ),
               ),
             ),

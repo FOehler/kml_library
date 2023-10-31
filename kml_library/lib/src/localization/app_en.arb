@@ -14,7 +14,12 @@
   "importPageImportButton": "Import",
   "collectionSettingPageDeleteButton": "Delete",
   "collectionSettingPageSaveButton": "Save",
+  "collectionSettingPageCollectionNameField": "Collection Name",
   "exportMapsMeHeader": "MAPS.ME KML",
   "exportMapsMeInfoText": "Currently only export to MAPS.ME KML files is supported.",
-  "exportPageImportButton": "Export"
+  "exportPageImportButton": "Export",
+  "markerListPageLabelMarkers": "Markers",
+  "markerListPageLabelSettings": "Settings",
+  "markerListPageLabelExport": "Export",
+  "markerListPageNoMarkersAvailable": "No markers available."
 }
