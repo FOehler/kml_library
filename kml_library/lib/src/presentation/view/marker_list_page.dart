@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
 import 'package:kml_library/src/domain/usecases/export_mapsme_collection_usecase.dart';
+import 'package:kml_library/src/presentation/view/marker_detail_page.dart';
 import 'package:kml_library/src/presentation/viewmodel/marker_list/collection_settings_viewmodel.dart';
 
 class MarkerListPage extends ConsumerStatefulWidget {
@@ -108,6 +109,12 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
   Widget _buildPlaceMarkerItemCard(
       BuildContext context, PlaceMarker placeMarker) {
     return ListTile(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => MarkerDetailPage(placeMarker: placeMarker)));
+        },
         leading: Icon(
           Icons.place_outlined,
           color: Color(placeMarker.color),
