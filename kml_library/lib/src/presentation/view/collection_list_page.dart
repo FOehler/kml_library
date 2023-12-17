@@ -28,7 +28,7 @@ class CollectionListPageState extends ConsumerState<CollectionListPage> {
         title: Text(AppLocalizations.of(context)!.collectionListTitle),
         centerTitle: true,
         actions: const [
-          IconButton(onPressed: null, icon: Icon(Icons.settings_outlined))
+          // IconButton(onPressed: null, icon: Icon(Icons.settings_outlined)) // TODO: Implement
         ],
       ),
       body: Column(
