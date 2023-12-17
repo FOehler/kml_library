@@ -26,10 +26,12 @@ class MainApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en', ''), // English, no country code
       ],
-      onGenerateTitle: (BuildContext context) => AppLocalizations.of(context)!.appTitle,
+      onGenerateTitle: (BuildContext context) =>
+          AppLocalizations.of(context)!.appTitle,
       theme: ThemeData(useMaterial3: true),
       darkTheme: ThemeData.dark(useMaterial3: true),
       home: CollectionListPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
