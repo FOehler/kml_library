@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kml_library/src/domain/model/collection.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
 import 'package:kml_library/src/domain/usecases/export_mapsme_collection_usecase.dart';
+import 'package:kml_library/src/presentation/helpers/extensions.dart';
 import 'package:kml_library/src/presentation/view/marker_detail_page.dart';
 import 'package:kml_library/src/presentation/viewmodel/marker_list/collection_settings_viewmodel.dart';
 
@@ -120,7 +121,7 @@ class MarkerListPageState extends ConsumerState<MarkerListPage> {
           color: Color(placeMarker.color),
         ),
         title: Text(
-          placeMarker.name,
+          placeMarker.name.cleanUp(),
         ),
         subtitle:
             Text("${placeMarker.xCoordinate}, ${placeMarker.yCoordinate}"));

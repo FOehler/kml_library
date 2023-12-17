@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kml_library/src/domain/model/place_marker.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:kml_library/src/presentation/helpers/extensions.dart';
 import 'package:latlong2/latlong.dart';
 
 class MarkerDetailPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class MarkerDetailPage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              Text(placeMarker.description),
+              Text(placeMarker.description.cleanUp()),
               Expanded(
                 child: FlutterMap(
                   options: MapOptions(
